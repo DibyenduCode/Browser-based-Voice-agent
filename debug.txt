@@ -1,0 +1,121 @@
+
+
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"POST b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"POST b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+RAW RESPONSE:
+{"message":"Workflow was started"}
+
+====================================
+TIME: 2026-05-06 12:07:31
+USER: what is Taj Mahal
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"POST b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+
+====================================
+TIME: 2026-05-06 12:08:38
+USER: what is Taj Mahal
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"POST b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+
+====================================
+TIME: 2026-05-06 12:09:45
+USER: what is Taj Mahal
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+
+
+====================================
+TIME: 2026-05-06 12:12:03
+USER: what is Taj Mahal
+HTTP CODE: 500
+RAW RESPONSE:
+{"message":"Error in workflow"}
+
+
+====================================
+TIME: 2026-05-06 12:13:45
+USER: what is Taj Mahal
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"The Taj Mahal is a white marble mausoleum in Agra, India, widely regarded as one of the world’s most beautiful buildings. Commissioned in 1632 by the Mughal emperor Shah Jahan, it was built as a tomb for his wife Mumtaz Mahal and completed around 1653.\n\nKey facts:\n- Location: Agra, Uttar Pradesh, on the south bank of the Yamuna River.\n- Architecture: Classic Mughal style combining Persian, Islamic and Indian elements; features a central dome, four minarets, a symmetrical plinth, and extensive gardens laid out in the charbagh (four-part) pattern.\n- Materials and decoration: Built mainly of white Makrana marble with inlaid semi-precious stones (pietra dura), intricate calligraphy and carved reliefs.\n- Status: UNESCO World Heritage Site (inscribed 1983) and an iconic symbol of India and of romantic love.\n- Dates: Construction began about 1632 and was largely finished by about 1653.\n\nIt’s a major tourist attraction and a subject of artistic and architectural study; conservation efforts have addressed pollution and environmental threats to its marble."}
+
+
+====================================
+TIME: 2026-05-06 12:19:57
+USER: what is Taj Mahal in short
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+
+
+====================================
+TIME: 2026-05-06 12:20:31
+USER: what is Taj Mahal in short
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"The Taj Mahal is a 17th‑century white‑marble mausoleum in Agra, India, built by Mughal emperor Shah Jahan (1632–1653) for his wife Mumtaz Mahal. It’s a masterpiece of Mughal architecture and a UNESCO World Heritage Site, widely regarded as a symbol of love."}
+
+
+====================================
+TIME: 2026-05-06 12:21:03
+USER: who is Narendra Modi
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+
+
+====================================
+TIME: 2026-05-06 12:21:38
+USER: who is Narendra Modi in short
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+
+
+====================================
+TIME: 2026-05-06 12:24:40
+USER: who is Taj Mahal
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Do you mean the Taj Mahal monument in India or the musician named Taj Mahal? Brief summaries of both:\n\n- Taj Mahal (monument): A famous white-marble mausoleum in Agra, India, built by Mughal emperor Shah Jahan in memory of his wife Mumtaz Mahal (construction began about 1632 and was largely completed by the 1650s). It’s an iconic example of Mughal architecture, a UNESCO World Heritage Site (since 1983), and one of the world’s most visited and photographed monuments.\n\n- Taj Mahal (musician): Stage name of Henry Saint Clair Fredericks (born 1942), an influential American blues musician and multi-instrumentalist. Active since the 1960s, he’s known for blending blues with Caribbean, African, and other world-music influences and for a long recording and performing career.\n\nWhich one would you like more detail about?"}
+
+
+====================================
+TIME: 2026-05-06 12:26:08
+USER: who is Narendra Modi
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Narendra Modi (full name Narendra Damodardas Modi) is an Indian politician who has served as the Prime Minister of India since May 26, 2014. Key points:\n\n- Born 17 September 1950 in Vadnagar, Gujarat.  \n- Leader of the Bharatiya Janata Party (BJP) and long associated with the Rashtriya Swayamsevak Sangh (RSS).  \n- Served as Chief Minister of Gujarat from 2001 to 2014.  \n- Elected Prime Minister after the BJP won a large parliamentary majority in 2014 and re-elected with an even bigger mandate in 2019. He represents the constituency of Varanasi in the Lok Sabha.  \n- Notable policies and initiatives under his government include: the 2016 demonetization, implementation of the Goods and Services Tax (GST), “Make in India,” “Swachh Bharat” (Clean India), expansion of digital services, Jan Dhan financial inclusion, and health and welfare programs such as Ayushman Bharat. He has also promoted initiatives like the International Solar Alliance.  \n- Modi is a polarizing figure: praised by supporters for economic reforms, development focus, and strong leadership; criticized by opponents and human-rights groups for policies seen as favoring Hindu nationalism and for controversies surrounding the 2002 Gujarat communal riots (when he was Gujarat’s chief minister). Investigations and the courts have not led to criminal conviction against him.  \n- Educationally he completed degrees in political science (BA and MA) and rose from modest beginnings—he worked in his family’s tea stall as a youth—to become India’s most prominent political leader.\n\nIf you want, I can give a more detailed timeline of his career, explain specific policies, or summarize the controversies and legal findings. Which would you prefer?"}
+
+
+====================================
+TIME: 2026-05-06 12:28:45
+USER: what is Lal Kila in short
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Lal Kila (Red Fort) is a 17th‑century Mughal fort in Old Delhi, built by Emperor Shah Jahan (1638–1648) from red sandstone. It was the Mughal emperors' main residence and seat of power, is a UNESCO World Heritage site, and is the site of India's annual Independence Day flag-hoisting."}
+
+
+====================================
+TIME: 2026-05-06 12:29:37
+USER: can you say what is the current time
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Sorry—I don’t have access to a real-time clock, so I can’t read your current time.\n\nI can help in other ways:\n- Tell me your city or timezone (e.g., \"America/New_York\" or \"UTC+2\") and I can explain how to convert times or answer time-related questions.\n- If you tell me the time shown on your device, I can convert it to other time zones.\n- Or I can show commands to check the time on your device:\n  - Windows Command Prompt: time /T\n  - PowerShell: Get-Date\n  - macOS/Linux Terminal: date\n  - Browser console: new Date().toLocaleTimeString()\n\nWhich would you like?"}
+
+
+====================================
+TIME: 2026-05-06 12:31:11
+USER: who are you
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"I'm an AI assistant (a large language model) created by OpenAI. I can answer questions, generate and edit text, help with coding, summarize information, translate, brainstorm, and — when you provide images — analyze them. \n\nLimitations: my knowledge goes up to June 2024, I don't have real-time web access, I can make mistakes, and I don't have consciousness or feelings. I don't access your accounts or private files unless you share them in the conversation.\n\nHow can I help you today?"}

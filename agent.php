@@ -8,312 +8,600 @@ if (!isset($_SESSION["access"])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <title>DK Voice Agent</title>
+
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-body {
-  background: radial-gradient(circle at center, #020617, #000);
-  color: white;
-  overflow: hidden;
+
+body{
+    margin:0;
+    padding:0;
+    background: radial-gradient(circle at center, #020617, #000);
+    overflow:hidden;
+    color:white;
+    font-family:Arial, sans-serif;
 }
 
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  flex-direction: column;
+.center{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
 }
 
-/* ORB */
-.orb-container {
-  position: relative;
-  width: 180px;
-  height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.orb-container{
+    position:relative;
+    width:220px;
+    height:220px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-/* BALL */
-.ball {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #06b6d4, #0ea5e9, #020617);
-  box-shadow: 0 0 30px cyan, 0 0 80px cyan;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 2;
+.ball{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background: radial-gradient(circle, #22d3ee, #0ea5e9, #020617);
+    box-shadow:
+        0 0 40px cyan,
+        0 0 80px rgba(0,255,255,0.7),
+        0 0 140px rgba(0,255,255,0.3);
+    transition:0.3s;
+    z-index:2;
 }
 
-/* WAVE */
-.wave {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 220px;
-  height: 220px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 2px solid cyan;
-  animation: wave 2s infinite;
-  display: none;
-  z-index: 1;
+.wave{
+    position:absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    border:2px solid cyan;
+    display:none;
+    animation:wave 2s infinite;
 }
 
-@keyframes wave {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-  100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+@keyframes wave{
+    0%{
+        transform:scale(1);
+        opacity:0.7;
+    }
+    100%{
+        transform:scale(1.8);
+        opacity:0;
+    }
 }
 
-/* SPEAKING */
-.speaking {
-  animation: speak 0.6s infinite;
+.speaking{
+    animation:speaking 0.7s infinite;
 }
 
-@keyframes speak {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
+@keyframes speaking{
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.13);
+    }
+    100%{
+        transform:scale(1);
+    }
 }
 
-/* STATUS */
-.status {
-  margin-top: 15px;
-  font-size: 13px;
-  color: cyan;
-  letter-spacing: 2px;
+.status{
+    margin-top:25px;
+    font-size:14px;
+    color:cyan;
+    letter-spacing:3px;
+    text-align:center;
 }
 
-/* ADMIN BUTTON */
-.admin-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  border: 1px solid cyan;
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 12px;
-  color: cyan;
-  transition: 0.3s;
+.admin-btn{
+    position:absolute;
+    top:20px;
+    right:20px;
+    border:1px solid cyan;
+    color:cyan;
+    padding:8px 18px;
+    border-radius:10px;
+    font-size:12px;
+    transition:0.3s;
+    text-decoration:none;
 }
 
-.admin-btn:hover {
-  background: cyan;
-  color: black;
+.admin-btn:hover{
+    background:cyan;
+    color:black;
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- ADMIN BUTTON -->
 <a href="login.php" class="admin-btn">Admin</a>
 
 <div class="center">
 
-  <div class="orb-container">
-    <div class="wave" id="wave"></div>
-    <div id="ball" class="ball"></div>
-  </div>
+    <div class="orb-container">
 
-  <div id="status" class="status">STARTING...</div>
+        <div class="wave" id="wave"></div>
+
+        <div class="ball" id="ball"></div>
+
+    </div>
+
+    <div class="status" id="status">
+        STARTING...
+    </div>
 
 </div>
 
 <script>
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
 const ball = document.getElementById("ball");
 const wave = document.getElementById("wave");
 const statusText = document.getElementById("status");
 
+/* =========================================
+   VARIABLES
+========================================= */
+
+let recognition = null;
+
+let standbyRecognition = null;
+
+let isListening = false;
+
+let isProcessing = false;
+
+let standbyTimer = null;
+
 let mode = "active";
-let standbyTimer;
-let audioStream;
 
-/* ========= STATE CONTROL ========= */
-function setState(state) {
-  ball.classList.remove("speaking");
-  wave.style.display = "none";
+/* =========================================
+   UI STATE
+========================================= */
 
-  if (state === "listening") {
-    wave.style.display = "block";
-    statusText.innerText = "ACTIVE • LISTENING";
-  }
+function setState(state){
 
-  if (state === "processing") {
-    ball.classList.add("speaking");
-    statusText.innerText = "PROCESSING...";
-  }
+    ball.classList.remove("speaking");
 
-  if (state === "standby") {
-    statusText.innerText = "STANDBY • SAY HEY DK";
-  }
+    wave.style.display = "none";
 
-  if (state === "active-idle") {
-    statusText.innerText = "ACTIVE • WAITING";
-  }
-}
+    if(state === "listening"){
 
-/* ========= MIC ALWAYS ON ========= */
-async function startMicStream() {
-  try {
-    audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-  } catch (e) {
-    console.log("Mic denied");
-  }
-}
+        wave.style.display = "block";
 
-/* ========= STARTUP VOICE ========= */
-function startupVoice() {
-
-  const steps = [
-    "Authentication successful",
-    "Welcome sir",
-    "System ready"
-  ];
-
-  let i = 0;
-
-  function run() {
-
-    if (i >= steps.length) {
-      startActiveListening();
-      resetStandbyTimer();
-      return;
+        statusText.innerText = "LISTENING...";
     }
 
-    const msg = new SpeechSynthesisUtterance(steps[i]);
-    msg.pitch = 0.7;
+    if(state === "processing"){
 
-    statusText.innerText = steps[i].toUpperCase();
-    ball.classList.add("speaking");
+        ball.classList.add("speaking");
+
+        statusText.innerText = "THINKING...";
+    }
+
+    if(state === "speaking"){
+
+        ball.classList.add("speaking");
+
+        statusText.innerText = "AI SPEAKING...";
+    }
+
+    if(state === "idle"){
+
+        statusText.innerText = "ACTIVE • WAITING";
+    }
+
+    if(state === "standby"){
+
+        statusText.innerText = "STANDBY • SAY HEY DK";
+    }
+}
+
+/* =========================================
+   STARTUP VOICE
+========================================= */
+
+function startupVoice(){
+
+    const steps = [
+        "Authentication successful",
+        "Welcome sir",
+        "System ready"
+    ];
+
+    let i = 0;
+
+    function next(){
+
+        if(i >= steps.length){
+
+            setState("idle");
+
+            resetStandbyTimer();
+
+            startListening();
+
+            return;
+        }
+
+        const msg = new SpeechSynthesisUtterance(steps[i]);
+
+        msg.pitch = 0.8;
+
+        msg.rate = 1;
+
+        ball.classList.add("speaking");
+
+        statusText.innerText = steps[i].toUpperCase();
+
+        msg.onend = () => {
+
+            ball.classList.remove("speaking");
+
+            i++;
+
+            setTimeout(next, 500);
+        };
+
+        speechSynthesis.speak(msg);
+    }
+
+    next();
+}
+
+/* =========================================
+   START LISTENING
+========================================= */
+
+function startListening(){
+
+    if(isListening || isProcessing) return;
+
+    stopStandbyRecognition();
+
+    recognition = new (
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition
+    )();
+
+    recognition.lang = "en-US";
+
+    recognition.interimResults = false;
+
+    recognition.maxAlternatives = 1;
+
+    isListening = true;
+
+    setState("listening");
+
+    recognition.start();
+
+    recognition.onresult = function(event){
+
+        const text = event.results[0][0].transcript.trim();
+
+        console.log("USER:", text);
+
+        if(text.length > 1){
+
+            stopListening();
+
+            resetStandbyTimer();
+
+            processCommand(text);
+        }
+    };
+
+    recognition.onerror = function(event){
+
+        console.log("Recognition Error:", event.error);
+
+        stopListening();
+
+        restartListening();
+    };
+
+    recognition.onend = function(){
+
+        isListening = false;
+
+        if(mode === "active" && !isProcessing){
+
+            restartListening();
+        }
+    };
+}
+
+/* =========================================
+   STOP LISTENING
+========================================= */
+
+function stopListening(){
+
+    if(recognition){
+
+        recognition.onend = null;
+
+        recognition.stop();
+
+        recognition = null;
+    }
+
+    isListening = false;
+}
+
+/* =========================================
+   SAFE RESTART
+========================================= */
+
+function restartListening(){
+
+    if(mode !== "active") return;
+
+    if(isProcessing) return;
+
+    setTimeout(() => {
+
+        if(!isListening && !isProcessing){
+
+            startListening();
+        }
+
+    }, 700);
+}
+
+/* =========================================
+   PROCESS COMMAND
+========================================= */
+
+async function processCommand(text){
+
+    try{
+
+        isProcessing = true;
+
+        stopListening();
+
+        clearTimeout(standbyTimer);
+
+        setState("processing");
+
+        speechSynthesis.cancel();
+
+        console.log("Sending to API:", text);
+
+        const response = await fetch("api.php", {
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                message:text
+            })
+        });
+
+        const data = await response.json();
+
+        console.log("AI RESPONSE:", data);
+
+        let reply = data.reply || "No response";
+
+        reply = reply.replace(/[*#]/g, "");
+
+        speak(reply);
+
+    }catch(error){
+
+        console.log("API ERROR:", error);
+
+        isProcessing = false;
+
+        setState("idle");
+
+        restartListening();
+    }
+}
+
+/* =========================================
+   SPEAK
+========================================= */
+
+function speak(text){
+
+    speechSynthesis.cancel();
+
+    stopListening();
+
+    clearTimeout(standbyTimer);
+
+    setState("speaking");
+
+    const msg = new SpeechSynthesisUtterance(text);
+
+    const voices = speechSynthesis.getVoices();
+
+    const voice =
+        voices.find(v =>
+            v.name.toLowerCase().includes("google")
+        ) || voices[0];
+
+    msg.voice = voice;
+
+    msg.pitch = 0.9;
+
+    msg.rate = 1;
+
+    msg.volume = 1;
+
+    msg.onstart = () => {
+
+        isProcessing = true;
+
+        setState("speaking");
+    };
 
     msg.onend = () => {
-      ball.classList.remove("speaking");
-      i++;
-      setTimeout(run, 400);
+
+        console.log("AI FINISHED");
+
+        isProcessing = false;
+
+        mode = "active";
+
+        setState("idle");
+
+        resetStandbyTimer();
+
+        setTimeout(() => {
+
+            startListening();
+
+        }, 700);
     };
 
     speechSynthesis.speak(msg);
-  }
-
-  run();
 }
 
-/* ========= INIT ========= */
-window.onload = function () {
-  startMicStream();
-  startupVoice();
+/* =========================================
+   STANDBY TIMER
+========================================= */
+
+function resetStandbyTimer(){
+
+    clearTimeout(standbyTimer);
+
+    if(isProcessing) return;
+
+    standbyTimer = setTimeout(() => {
+
+        if(!isProcessing){
+
+            goStandby();
+        }
+
+    }, 30000);
+}
+
+/* =========================================
+   GO STANDBY
+========================================= */
+
+function goStandby(){
+
+    if(isProcessing) return;
+
+    mode = "standby";
+
+    stopListening();
+
+    setState("standby");
+
+    startStandbyRecognition();
+}
+
+/* =========================================
+   STANDBY RECOGNITION
+========================================= */
+
+function startStandbyRecognition(){
+
+    stopStandbyRecognition();
+
+    standbyRecognition = new (
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition
+    )();
+
+    standbyRecognition.continuous = true;
+
+    standbyRecognition.lang = "en-US";
+
+    standbyRecognition.start();
+
+    standbyRecognition.onresult = function(event){
+
+        const text = event.results[
+            event.results.length - 1
+        ][0].transcript.toLowerCase();
+
+        console.log("WAKE:", text);
+
+        if(text.includes("hey dk")){
+
+            stopStandbyRecognition();
+
+            mode = "active";
+
+            setState("idle");
+
+            resetStandbyTimer();
+
+            setTimeout(() => {
+
+                startListening();
+
+            }, 500);
+        }
+    };
+
+    standbyRecognition.onerror = function(){
+
+        if(mode === "standby"){
+
+            setTimeout(startStandbyRecognition, 1000);
+        }
+    };
+
+    standbyRecognition.onend = function(){
+
+        if(mode === "standby"){
+
+            setTimeout(startStandbyRecognition, 1000);
+        }
+    };
+}
+
+/* =========================================
+   STOP STANDBY RECOGNITION
+========================================= */
+
+function stopStandbyRecognition(){
+
+    if(standbyRecognition){
+
+        standbyRecognition.onend = null;
+
+        standbyRecognition.stop();
+
+        standbyRecognition = null;
+    }
+}
+
+/* =========================================
+   INIT
+========================================= */
+
+window.onload = () => {
+
+    startupVoice();
 };
 
-/* ========= ACTIVE MODE ========= */
-function startActiveListening() {
-
-  mode = "active";
-
-  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-
-  setState("listening");
-
-  recognition.start();
-
-  recognition.onresult = function(event) {
-
-    const text = event.results[0][0].transcript.trim();
-
-    if (text.length > 1) {
-      resetStandbyTimer();
-      processCommand(text);
-    }
-  };
-
-  recognition.onend = function() {
-
-    if (mode === "active") {
-      setState("active-idle");
-      setTimeout(startActiveListening, 200);
-    }
-  };
-}
-
-/* ========= TIMER ========= */
-function resetStandbyTimer() {
-  clearTimeout(standbyTimer);
-
-  standbyTimer = setTimeout(() => {
-    goStandby();
-  }, 30000);
-}
-
-/* ========= STANDBY ========= */
-function goStandby() {
-  mode = "standby";
-  setState("standby");
-  startWakeWord();
-}
-
-/* ========= WAKE WORD ========= */
-function startWakeWord() {
-
-  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-  recognition.continuous = true;
-
-  recognition.start();
-
-  recognition.onresult = function(event) {
-    const text = event.results[event.results.length - 1][0].transcript.toLowerCase();
-
-    if (text.includes("hey dk")) {
-      recognition.stop();
-
-      statusText.innerText = "ACTIVATING...";
-      resetStandbyTimer();
-      startActiveListening();
-    }
-  };
-
-  recognition.onend = function() {
-    if (mode === "standby") {
-      setTimeout(startWakeWord, 300);
-    }
-  };
-}
-
-/* ========= PROCESS ========= */
-function processCommand(text) {
-
-  setState("processing");
-
-  fetch("api.php", {
-    method: "POST",
-    headers: {"Content-Type":"application/json"},
-    body: JSON.stringify({message:text})
-  })
-  .then(res=>res.json())
-  .then(data=>{
-    speak(data.reply || "Done");
-  });
-}
-
-/* ========= SPEAK ========= */
-function speak(text) {
-  const voices = speechSynthesis.getVoices();
-  const male = voices.find(v => v.name.toLowerCase().includes("google"));
-
-  const msg = new SpeechSynthesisUtterance(text);
-  msg.voice = male || voices[0];
-  msg.pitch = 0.7;
-
-  msg.onend = () => {
-    setState("active-idle");
-  };
-
-  speechSynthesis.speak(msg);
-}
 </script>
 
 </body>
