@@ -119,3 +119,486 @@ USER: who are you
 HTTP CODE: 200
 RAW RESPONSE:
 {"output":"I'm an AI assistant (a large language model) created by OpenAI. I can answer questions, generate and edit text, help with coding, summarize information, translate, brainstorm, and — when you provide images — analyze them. \n\nLimitations: my knowledge goes up to June 2024, I don't have real-time web access, I can make mistakes, and I don't have consciousness or feelings. I don't access your accounts or private files unless you share them in the conversation.\n\nHow can I help you today?"}
+
+
+====================================
+TIME: 2026-05-06 12:42:28
+USER: নরেন্দ্র মোদি কে
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"POST b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+
+====================================
+TIME: 2026-05-06 12:45:53
+USER: নরেন্দ্র মোদি কে
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"নরেন্দ্র মোদি একজন ভারতীয় রাজনীতিবিদ ও ২০১৪ সাল থেকে ভারতের প্রধানমন্ত্রী। তিনি ভারতীয় জনতা পার্টির নেতা এবং ২০০১ থেকে ২০১৪ পর্যন্ত গুজরাটের মুখ্যমন্ত্রী ছিলেন। ১৯৫০ সালে গুজরাটের ভাদনগরে জন্মগ্রহণ করেন। তাঁর সময়ে বড় নীতি ও সংস্কার হয়েছে (যেমন ২০১৬ সালের নোটবন্দি, জিএসটি) এবং ২০০২ সালের গুজরাট দাঙ্গার কারণে তাঁকে সমালোচিত করা হয়ে এসেছে।"}
+
+
+====================================
+TIME: 2026-05-06 12:49:59
+USER: who is Narendra Modi
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"POST b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+
+====================================
+TIME: 2026-05-06 12:50:49
+USER: who is Narendra Modi
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Narendra Modi is an Indian politician who has served as Prime Minister of India since May 2014. He leads the Bharatiya Janata Party (BJP). Born in 1950 in Vadnagar, Gujarat, he was active in the Rashtriya Swayamsevak Sangh (RSS) and served as Chief Minister of Gujarat from 2001 to 2014. As prime minister he has pushed economic and infrastructure initiatives (like Make in India and the goods and services tax), digital and welfare programs, and a more assertive foreign policy. He is a popular but polarizing figure—praised by supporters for development and leadership, and criticized by others for issues such as the 2002 Gujarat riots, concerns about religious nationalism, and civil liberties."}
+
+
+====================================
+TIME: 2026-05-06 12:53:43
+USER: who is Narendra Modi
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Narendra Modi is the Prime Minister of India, first elected in 2014 and re-elected in 2019. He leads the Bharatiya Janata Party (BJP) and was chief minister of Gujarat from 2001 to 2014. Born in 1950 in Vadnagar, Gujarat, he rose from a modest background and earlier worked with the Rashtriya Swayamsevak Sangh (RSS). His government has pushed major initiatives like GST, demonetisation in 2016, Make in India, and Swachh Bharat, and he is both widely popular and a focus of controversy on issues such as the 2002 Gujarat riots and concerns about civil liberties."}
+
+
+====================================
+TIME: 2026-05-06 12:58:40
+USER: say about India
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"India is a large, diverse country in South Asia with about 1.4 billion people. It has many languages, religions, and cultures, and a long history from ancient civilizations to modern technology and democracy. You'll find everything from the Himalayas and tropical beaches to bustling cities and historic sites like the Taj Mahal. Indian food, music, festivals, and films are rich and varied, and the country is a major global player in IT, science, and trade."}
+
+
+====================================
+TIME: 2026-05-06 13:00:15
+USER: say something about India
+HTTP CODE: 500
+RAW RESPONSE:
+{"message":"Error in workflow"}
+
+
+====================================
+TIME: 2026-05-06 13:23:24
+USER: can you add a to do
+HTTP CODE: 500
+RAW RESPONSE:
+{"message":"Error in workflow"}
+
+
+====================================
+TIME: 2026-05-06 13:23:53
+USER: added to do that play football
+HTTP CODE: 500
+RAW RESPONSE:
+{"message":"Error in workflow"}
+
+
+====================================
+TIME: 2026-05-06 13:24:52
+USER: can you say what is my to do today
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"You have one task today: Loan meeting — status: pending. Would you like me to mark it done or add another?"}
+
+
+====================================
+TIME: 2026-05-06 13:25:16
+USER: add a new to do
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Sure — what would you like the todo to say?"}
+
+
+====================================
+TIME: 2026-05-06 13:25:33
+USER: I want to add play football status active
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Do you mean status \"in progress\" when you say active, or should I save \"play football\" as pending? Which would you like?"}
+
+
+====================================
+TIME: 2026-05-06 13:26:07
+USER: added to do play football status pending
+HTTP CODE: 500
+RAW RESPONSE:
+{"message":"Error in workflow"}
+
+
+====================================
+TIME: 2026-05-06 13:26:39
+USER: update new to do name play football status pending
+HTTP CODE: 500
+RAW RESPONSE:
+{"message":"Error in workflow"}
+
+
+====================================
+TIME: 2026-05-06 13:30:15
+USER: added to do play football status pending
+HTTP CODE: 500
+RAW RESPONSE:
+{"message":"Error in workflow"}
+
+
+====================================
+TIME: 2026-05-06 13:32:51
+USER: update a new to do play football status pending
+HTTP CODE: 500
+RAW RESPONSE:
+{"message":"Error in workflow"}
+
+
+====================================
+TIME: 2026-05-06 13:33:30
+USER: Lal Singh Gurjar
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Do you mean a person named Lal Singh Gurjar? How can I help—look up information, save as a reminder or task, or something else?"}
+
+
+====================================
+TIME: 2026-05-06 17:14:31
+USER: say about something India
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"POST b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+
+====================================
+TIME: 2026-05-06 17:15:52
+USER: say something about India
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"India is a vast, vibrant country in South Asia known for its deep history, cultural diversity, and lively festivals. It’s home to the Himalayas in the north, long coastlines, bustling cities like Mumbai and Bangalore, and iconic landmarks such as the Taj Mahal. With thousands of languages and a rich mix of religions and cuisines, India blends tradition and modern innovation—especially in technology, film, and the arts. It’s a place of colorful celebrations, warm hospitality, and endless variety."}
+
+
+====================================
+TIME: 2026-05-06 17:16:46
+USER: can you check to do
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"You have one todo: \"Loan meeting\" — status: pending. Would you like me to mark it completed or update it?"}
+
+
+====================================
+TIME: 2026-05-06 17:17:15
+USER: say about something in England
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"England mixes history and everyday life in a charming way. In London you can stand by the Thames, see the Tower of London and modern skyscrapers, then duck into a cozy pub for a pint. Outside the cities, rolling green countryside, quaint villages, and dramatic coastlines make it easy to slow down and explore."}
+
+
+====================================
+TIME: 2026-05-06 17:18:11
+USER: which political party is win 2026 in India
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"I can’t predict future election results. Which 2026 election do you mean — a specific state or a national vote? I can share current polls, party profiles, or recent trends if you want."}
+
+
+====================================
+TIME: 2026-05-06 17:18:40
+USER: West Bengal
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"West Bengal is a state in eastern India with its capital at Kolkata. Bengali is the main language and the state is famous for its rich culture—Rabindranath Tagore, Durga Puja, classical music and literature. Geography ranges from the Himalayan foothills and tea gardens of Darjeeling in the north to the Sundarbans mangrove delta and the Bay of Bengal in the south. Economy includes agriculture, tea, industry and services. Would you like info on history, travel, culture, current news, or something else?"}
+
+
+====================================
+TIME: 2026-05-06 21:14:36
+USER: add it to do meeting with Kunal status pending
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Got it — I added \"meeting with Kunal\" with status pending. Need me to show your todos or set a reminder?"}
+
+
+====================================
+TIME: 2026-05-06 21:15:02
+USER: show me my todos
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Here are your todos: Loan meeting — not done. Meeting with Keunal — pending. meeting with Kunal — pending."}
+
+
+====================================
+TIME: 2026-05-06 21:15:33
+USER: delete meeting with Kunal pending fast
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Done — I deleted the pending task \"meeting with Kunal\". Anything else I can do?"}
+
+
+====================================
+TIME: 2026-05-06 21:15:58
+USER: show again my today's
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Here are your tasks for today: Loan meeting — not done. Meeting with Keunal — pending. Want me to update or mark any as done?"}
+
+
+====================================
+TIME: 2026-05-06 21:16:19
+USER: update meeting Kunal done
+HTTP CODE: 500
+RAW RESPONSE:
+{"message":"Error in workflow"}
+
+
+====================================
+TIME: 2026-05-06 21:16:31
+USER: update
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Sure—what task would you like to update, and what should its new status be? (pending, in progress, or completed.)"}
+
+
+====================================
+TIME: 2026-05-06 21:17:00
+USER: change status pending in loan meeting
+HTTP CODE: 500
+RAW RESPONSE:
+{"message":"Error in workflow"}
+
+
+====================================
+TIME: 2026-05-06 21:20:06
+USER: set meeting Kunal status
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Do you mean \"Meeting with Keunal\"? What status should I set—pending, in progress, or completed?"}
+
+
+====================================
+TIME: 2026-05-06 21:20:35
+USER: set meeting Kunal status progress
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Done — “meeting Kunal” is now marked in progress. Need anything else?"}
+
+
+====================================
+TIME: 2026-05-06 21:21:04
+USER: set loan meeting status
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Sure — what status would you like to set for \"loan meeting\"? You can choose pending, in progress, or completed."}
+
+
+====================================
+TIME: 2026-05-06 21:22:00
+USER: set loan meeting status cancel
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"I can’t set status to “cancel.” Would you like me to mark \"Loan meeting\" as completed, set it to in progress, keep it pending, or delete the task?"}
+
+
+====================================
+TIME: 2026-05-06 21:22:37
+USER: delete the tax loan meeting
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"I've deleted the task."}
+
+
+====================================
+TIME: 2026-05-06 21:23:17
+USER: at 822
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Do you want me to add a reminder or task for 8:22? If so, tell me the task name and whether you mean AM or PM."}
+
+
+====================================
+TIME: 2026-05-06 21:23:45
+USER: added to do call Sudipta status pending
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Got it — I added \"call Sudipta\" (status: pending). Would you like to add or update anything else?"}
+
+
+====================================
+TIME: 2026-05-06 21:24:37
+USER: PHP coding practice status pending
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Got it — I added \"PHP coding practice\" and set it as pending. Would you like to see your todo list or set a reminder?"}
+
+
+====================================
+TIME: 2026-05-06 21:25:08
+USER: now say about something about PHP loop
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Sure — here’s a quick rundown of PHP loops.\n\nA for loop is great when you know how many times to run: for ($i = 0; $i < 5; $i++) { echo $i; }  \nwhile runs while a condition is true, useful when the number of iterations isn’t fixed: while ($n > 0) { echo $n; $n--; }  \ndo-while runs the block at least once: do { /* code */ } while ($cond);  \nforeach is best for arrays and objects: foreach ($arr as $key => $value) { echo \"$key: $value\"; }\n\nYou can use break to exit a loop early and continue to skip to the next iteration.  \nWant a specific example or help converting a loop in your code?"}
+
+
+====================================
+TIME: 2026-05-06 21:33:38
+USER: send a email to DK Hospital
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Sure — I can do that. What's DK Hospital's email address, the subject you want, and the message you'd like to send? Also, do you want a professional tone and should I include your name/signature?"}
+
+
+====================================
+TIME: 2026-05-06 21:34:09
+USER: send a simple hello mail to DK hospital at the gmail.com
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Do you mean dkhospital@gmail.com? If so, shall I send this simple message:\n\nSubject: Hello\nMessage: Hello DK Hospital — just saying hi.\n\nReply \"Yes\" to send, or tell me the correct email/subject/message."}
+
+
+====================================
+TIME: 2026-05-06 21:34:42
+USER: send email to play coc at the rate gmail.com
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Sure — I can send that. Can you confirm the exact email address? Did you mean playcoc@gmail.com? Also tell me the subject and the message you want to send."}
+
+
+====================================
+TIME: 2026-05-06 21:35:09
+USER: send email to play coc number 1@gmail.com subject is hello
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"I can do that. Please confirm the recipient email — is it \"playcocnumber1@gmail.com\" or \"play coc number 1@gmail.com\"? And what should the message say?"}
+
+
+====================================
+TIME: 2026-05-06 21:39:05
+USER: can you read my last
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Do you mean your last to-do item, your last email, or something else?"}
+
+
+====================================
+TIME: 2026-05-06 21:39:22
+USER: read my last email
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Do you mean the most recent message in your inbox or the last one you sent? I don't have access to your mailbox—would you like to paste the email here for me to read, or should I help you find or draft a reply?"}
+
+
+====================================
+TIME: 2026-05-06 21:40:07
+USER: read my last
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"You have two pending tasks: \"call Sudipta\" — pending, and \"PHP coding practice\" — pending. Would you like me to update or add any?"}
+
+
+====================================
+TIME: 2026-05-06 21:40:27
+USER: get lost
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"I'm sorry. I'll step back now. If you need anything later, just let me know."}
+
+
+====================================
+TIME: 2026-05-06 21:40:54
+USER: last email which I received in my inbox
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Do you mean you want me to read the most recent email, draft a reply, or forward it? I don't have direct access to your inbox—you can paste the email here or tell me what you'd like me to do with it."}
+
+
+====================================
+TIME: 2026-05-06 21:53:47
+SESSION: kpo48cn08h7n7j2qveguhafs6s
+USER: my name is Deepak
+HTTP CODE: 500
+RAW RESPONSE:
+{"message":"Error in workflow"}
+
+
+====================================
+TIME: 2026-05-06 21:53:57
+SESSION: kpo48cn08h7n7j2qveguhafs6s
+USER: my name is Jitendra
+HTTP CODE: 500
+RAW RESPONSE:
+{"message":"Error in workflow"}
+
+
+====================================
+TIME: 2026-05-06 21:56:30
+SESSION: kpo48cn08h7n7j2qveguhafs6s
+USER: my name is Dipendra
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"POST b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+
+====================================
+TIME: 2026-05-06 21:57:19
+SESSION: kpo48cn08h7n7j2qveguhafs6s
+USER: my name is Dipendra
+HTTP CODE: 200
+RAW RESPONSE:
+{"headers":{"host":"dibyendun8n.site","x-forwarded-scheme":"https","x-forwarded-proto":"https","x-forwarded-for":"150.129.110.77","x-real-ip":"150.129.110.77","content-length":"126","accept":"*/*","content-type":"application/json"},"params":{},"query":{},"body":{"message":"my name is Dipendra","sessionId":"kpo48cn08h7n7j2qveguhafs6s","source":"voice-agent","time":"2026-05-06 21:57:19"},"webhookUrl":"https://dibyendun8n.site/webhook-test/b3a0b758-b4af-4ad2-9c1b-b30857f2ccce","executionMode":"test"}
+
+
+====================================
+TIME: 2026-05-06 21:58:35
+SESSION: kpo48cn08h7n7j2qveguhafs6s
+USER: what is my name
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+
+
+====================================
+TIME: 2026-05-06 21:59:43
+SESSION: kpo48cn08h7n7j2qveguhafs6s
+USER: what is my name
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Your name is Dipendra."}
+
+
+====================================
+TIME: 2026-05-06 21:59:57
+SESSION: kpo48cn08h7n7j2qveguhafs6s
+USER: can you send a email
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Sure—who should I send it to (email address)? What's the subject, and what do you want the message to say? Do you want a professional or casual tone?"}
+
+
+====================================
+TIME: 2026-05-06 22:00:23
+SESSION: kpo48cn08h7n7j2qveguhafs6s
+USER: email address is 2D cake khaskar at the rate gmail.com
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Got it. Can you confirm the exact email address in standard format (for example: 2Dcakekhaskar@gmail.com)? What’s the subject, the message, and do you want a professional or casual tone?"}
+
+
+====================================
+TIME: 2026-05-06 22:00:53
+SESSION: kpo48cn08h7n7j2qveguhafs6s
+USER: confirm the email address email address is 2dk hostel at the rate gmail.com
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Do you mean 2dkhostel@gmail.com? If that's correct, what's the subject, the message, and do you want a professional or casual tone?"}
+
+
+====================================
+TIME: 2026-05-06 22:01:11
+SESSION: kpo48cn08h7n7j2qveguhafs6s
+USER: subject is hello
+HTTP CODE: 200
+RAW RESPONSE:
+{"output":"Thanks. Please confirm the recipient is 2dkhostel@gmail.com. What should the message say, and do you want a professional or casual tone?"}
+
+
+====================================
+TIME: 2026-05-06 22:04:26
+SESSION: kpo48cn08h7n7j2qveguhafs6s
+USER: can you check my to do
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"POST b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}

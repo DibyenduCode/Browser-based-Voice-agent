@@ -1,5 +1,11 @@
 <?php
 
+/* =========================================
+   START SESSION FOR MEMORY
+========================================= */
+
+session_start();
+
 header("Content-Type: application/json");
 
 /* =========================================
@@ -19,7 +25,9 @@ $message = trim(
     ""
 );
 
-/* EMPTY CHECK */
+/* =========================================
+   EMPTY CHECK
+========================================= */
 
 if (empty($message)) {
 
@@ -32,6 +40,17 @@ if (empty($message)) {
 }
 
 /* =========================================
+   UNIQUE SESSION ID FOR MEMORY
+========================================= */
+
+if (!isset($_SESSION["voice_session"])) {
+
+    $_SESSION["voice_session"] = session_id();
+}
+
+$sessionId = $_SESSION["voice_session"];
+
+/* =========================================
    N8N WEBHOOK
 ========================================= */
 
@@ -42,8 +61,21 @@ $webhook = "https://dibyendun8n.site/webhook/b3a0b758-b4af-4ad2-9c1b-b30857f2ccc
 ========================================= */
 
 $payload = [
+
+    /* USER MESSAGE */
+
     "message" => $message,
+
+    /* MEMORY SESSION */
+
+    "sessionId" => $sessionId,
+
+    /* SOURCE */
+
     "source" => "voice-agent",
+
+    /* TIME */
+
     "time" => date("Y-m-d H:i:s")
 ];
 
@@ -104,12 +136,16 @@ if ($error) {
 ========================================= */
 
 file_put_contents(
+
     "debug.txt",
+
     "\n\n====================================\n".
     "TIME: ".date("Y-m-d H:i:s")."\n".
+    "SESSION: ".$sessionId."\n".
     "USER: ".$message."\n".
     "HTTP CODE: ".$httpCode."\n".
     "RAW RESPONSE:\n".$response."\n",
+
     FILE_APPEND
 );
 
@@ -141,7 +177,12 @@ elseif (isset($result["output"])) {
 
 /* ARRAY RESPONSE */
 
-elseif (is_array($result) && isset($result[0]["output"])) {
+elseif (
+
+    is_array($result) &&
+    isset($result[0]["output"])
+
+) {
 
     $reply = $result[0]["output"];
 }
@@ -170,9 +211,13 @@ $reply = html_entity_decode($reply);
 
 $reply = preg_replace('/\s+/', ' ', $reply);
 
+$reply = preg_replace('/[*#]/', '', $reply);
+
 $reply = trim($reply);
 
-/* LIMIT VERY LONG RESPONSE */
+/* =========================================
+   LIMIT VERY LONG RESPONSE
+========================================= */
 
 if (strlen($reply) > 3000) {
 
@@ -184,8 +229,13 @@ if (strlen($reply) > 3000) {
 ========================================= */
 
 echo json_encode([
-    "success" => true,
-    "reply" => $reply
-]);
 
+    "success" => true,
+
+    "reply" => $reply,
+
+    /* OPTIONAL DEBUG */
+
+    "sessionId" => $sessionId
+]);
 ?>

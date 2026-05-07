@@ -48,10 +48,12 @@ body{
     height:180px;
     border-radius:50%;
     background: radial-gradient(circle, #22d3ee, #0ea5e9, #020617);
+
     box-shadow:
         0 0 40px cyan,
         0 0 80px rgba(0,255,255,0.7),
         0 0 140px rgba(0,255,255,0.3);
+
     transition:0.3s;
     z-index:2;
 }
@@ -67,10 +69,12 @@ body{
 }
 
 @keyframes wave{
+
     0%{
         transform:scale(1);
         opacity:0.7;
     }
+
     100%{
         transform:scale(1.8);
         opacity:0;
@@ -82,12 +86,15 @@ body{
 }
 
 @keyframes speaking{
+
     0%{
         transform:scale(1);
     }
+
     50%{
         transform:scale(1.13);
     }
+
     100%{
         transform:scale(1);
     }
@@ -105,17 +112,26 @@ body{
     position:absolute;
     top:20px;
     right:20px;
+
     border:1px solid cyan;
+
     color:cyan;
+
     padding:8px 18px;
+
     border-radius:10px;
+
     font-size:12px;
+
     transition:0.3s;
+
     text-decoration:none;
 }
 
 .admin-btn:hover{
+
     background:cyan;
+
     color:black;
 }
 
@@ -124,7 +140,9 @@ body{
 
 <body>
 
-<a href="login.php" class="admin-btn">Admin</a>
+<a href="login.php" class="admin-btn">
+    Admin
+</a>
 
 <div class="center">
 
@@ -149,7 +167,9 @@ body{
 ========================================= */
 
 const ball = document.getElementById("ball");
+
 const wave = document.getElementById("wave");
+
 const statusText = document.getElementById("status");
 
 /* =========================================
@@ -217,9 +237,12 @@ function setState(state){
 function startupVoice(){
 
     const steps = [
+
         "Authentication successful",
-        "Welcome sir",
-        "System ready"
+
+        "Welcome back",
+
+        "Voice assistant is ready"
     ];
 
     let i = 0;
@@ -239,9 +262,11 @@ function startupVoice(){
 
         const msg = new SpeechSynthesisUtterance(steps[i]);
 
-        msg.pitch = 0.8;
+        msg.lang = "en-IN";
 
-        msg.rate = 1;
+        msg.pitch = 1;
+
+        msg.rate = 0.95;
 
         ball.classList.add("speaking");
 
@@ -273,11 +298,16 @@ function startListening(){
     stopStandbyRecognition();
 
     recognition = new (
+
         window.SpeechRecognition ||
+
         window.webkitSpeechRecognition
+
     )();
 
-    recognition.lang = "en-US";
+    /* Indian English */
+
+    recognition.lang = "en-IN";
 
     recognition.interimResults = false;
 
@@ -381,7 +411,7 @@ async function processCommand(text){
 
         speechSynthesis.cancel();
 
-        console.log("Sending to API:", text);
+        console.log("Sending:", text);
 
         const response = await fetch("api.php", {
 
@@ -402,7 +432,15 @@ async function processCommand(text){
 
         let reply = data.reply || "No response";
 
-        reply = reply.replace(/[*#]/g, "");
+        /* CLEAN RESPONSE */
+
+        reply = reply.replace(/\*/g, "");
+
+        reply = reply.replace(/#/g, "");
+
+        reply = reply.replace(/\n/g, " ");
+
+        reply = reply.trim();
 
         speak(reply);
 
@@ -414,12 +452,12 @@ async function processCommand(text){
 
         setState("idle");
 
-        restartListening();
+        speak("Connection problem occurred");
     }
 }
 
 /* =========================================
-   SPEAK
+   FEMALE INDIAN VOICE
 ========================================= */
 
 function speak(text){
@@ -436,16 +474,57 @@ function speak(text){
 
     const voices = speechSynthesis.getVoices();
 
-    const voice =
+    console.log("VOICES:", voices);
+
+    /* Female Voice */
+
+    let voice =
+
+        /* Google Female */
+
         voices.find(v =>
-            v.name.toLowerCase().includes("google")
-        ) || voices[0];
+            v.name.includes("Google UK English Female")
+        ) ||
+
+        voices.find(v =>
+            v.name.includes("Google US English")
+        ) ||
+
+        /* Microsoft Female */
+
+        voices.find(v =>
+            v.name.includes("Heera")
+        ) ||
+
+        voices.find(v =>
+            v.name.includes("Zira")
+        ) ||
+
+        voices.find(v =>
+            v.name.includes("Female")
+        ) ||
+
+        /* Indian */
+
+        voices.find(v =>
+            v.lang === "en-IN"
+        ) ||
+
+        voices[0];
+
+    console.log("SELECTED:", voice);
 
     msg.voice = voice;
 
-    msg.pitch = 0.9;
+    /* Indian English */
 
-    msg.rate = 1;
+    msg.lang = "en-IN";
+
+    /* Natural Female Tone */
+
+    msg.pitch = 1.1;
+
+    msg.rate = 0.96;
 
     msg.volume = 1;
 
@@ -524,13 +603,16 @@ function startStandbyRecognition(){
     stopStandbyRecognition();
 
     standbyRecognition = new (
+
         window.SpeechRecognition ||
+
         window.webkitSpeechRecognition
+
     )();
 
     standbyRecognition.continuous = true;
 
-    standbyRecognition.lang = "en-US";
+    standbyRecognition.lang = "en-IN";
 
     standbyRecognition.start();
 
@@ -542,7 +624,13 @@ function startStandbyRecognition(){
 
         console.log("WAKE:", text);
 
-        if(text.includes("hey dk")){
+        if(
+
+            text.includes("hey dk") ||
+
+            text.includes("hey d k")
+
+        ){
 
             stopStandbyRecognition();
 
