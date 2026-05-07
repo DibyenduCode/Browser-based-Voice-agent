@@ -602,3 +602,39 @@ USER: can you check my to do
 HTTP CODE: 404
 RAW RESPONSE:
 {"code":404,"message":"The requested webhook \"POST b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+
+====================================
+TIME: 2026-05-07 08:18:03
+SESSION: cuo5kadik4bmnpqddrajnn46nu
+USER: who are you?
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"POST b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+
+====================================
+TIME: 2026-05-07 08:18:41
+SESSION: cuo5kadik4bmnpqddrajnn46nu
+USER: hello who are you
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"POST b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+
+====================================
+TIME: 2026-05-07 08:25:03
+SESSION: cuo5kadik4bmnpqddrajnn46nu
+USER: Tell joke
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"POST b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}
+
+
+====================================
+TIME: 2026-05-07 12:15:38
+SESSION: kdrk7lhjthmtoiemoktuart3tp
+USER: hello
+HTTP CODE: 404
+RAW RESPONSE:
+{"code":404,"message":"The requested webhook \"POST b3a0b758-b4af-4ad2-9c1b-b30857f2ccce\" is not registered.","hint":"The workflow must be active for a production URL to run successfully. You can activate the workflow using the toggle in the top-right of the editor. Note that unlike test URL calls, production URL calls aren't shown on the canvas (only in the executions list)"}

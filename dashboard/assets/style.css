@@ -1,0 +1,493 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:sans-serif;
+    overflow:hidden;
+    transition:0.3s;
+}
+/* =========================
+   TOPBAR ACTIONS
+========================= */
+
+.topbar-actions{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.status-box{
+    text-align:right;
+    margin-right:10px;
+}
+
+/* =========================
+   TOP BUTTONS
+========================= */
+
+.top-btn{
+    border:none;
+    padding:12px 18px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+    color:white;
+    font-size:14px;
+}
+
+.top-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================
+   THEME BUTTON
+========================= */
+
+.theme-btn{
+    background:linear-gradient(90deg,#334155,#475569);
+}
+
+/* =========================
+   LOGOUT BUTTON
+========================= */
+
+.logout-top-btn{
+    background:linear-gradient(90deg,#ef4444,#dc2626);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    .topbar-actions{
+        width:100%;
+        flex-wrap:wrap;
+        justify-content:flex-start;
+    }
+
+    .status-box{
+        text-align:left;
+        width:100%;
+    }
+
+}
+/* =========================
+   DARK THEME
+========================= */
+
+body.dark{
+    background: radial-gradient(circle at center, #020617, #000);
+    color:white;
+}
+
+body.dark::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(0,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,255,0.05) 1px, transparent 1px);
+    background-size:40px 40px;
+    z-index:-1;
+}
+
+/* =========================
+   LIGHT THEME
+========================= */
+
+body.light{
+    background:#eaf1f7;
+    color:#111827;
+}
+
+body.light::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+    background-size:40px 40px;
+    z-index:-1;
+}
+
+/* =========================
+   APP
+========================= */
+
+.app{
+    display:flex;
+    height:100vh;
+}
+
+/* =========================
+   GLASS
+========================= */
+
+.glass{
+    backdrop-filter:blur(18px);
+    transition:0.3s;
+}
+
+body.dark .glass{
+    background:rgba(0,0,0,0.35);
+    border:1px solid rgba(0,255,255,0.15);
+    box-shadow:
+        0 0 20px rgba(0,255,255,0.08);
+}
+
+body.light .glass{
+    background:rgba(255,255,255,0.65);
+    border:1px solid rgba(255,255,255,0.8);
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+    width:290px;
+    height:100vh;
+    padding:25px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.sidebar-top{
+    overflow-y:auto;
+    padding-right:5px;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-box{
+    margin-bottom:35px;
+}
+
+.logo-text{
+    font-size:30px;
+    font-weight:bold;
+    color:#22d3ee;
+    letter-spacing:2px;
+}
+
+.logo-sub{
+    margin-top:6px;
+    font-size:12px;
+    color:gray;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-card{
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.avatar{
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    background:rgba(0,255,255,0.1);
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+}
+
+.profile-name{
+    margin-top:16px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.profile-role{
+    margin-top:5px;
+    font-size:13px;
+    color:gray;
+}
+
+/* =========================
+   MENU
+========================= */
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.menu-item{
+    text-decoration:none;
+    padding:16px;
+    border-radius:14px;
+    transition:0.3s;
+    border:1px solid transparent;
+    font-weight:500;
+}
+
+body.dark .menu-item{
+    color:white;
+}
+
+body.light .menu-item{
+    color:#111827;
+}
+
+.menu-item:hover{
+    background:rgba(0,255,255,0.08);
+    border-color:rgba(0,255,255,0.2);
+    transform:translateX(4px);
+}
+
+.menu-item.active{
+    background:rgba(0,255,255,0.12);
+    border-color:rgba(0,255,255,0.3);
+    box-shadow:0 0 20px rgba(0,255,255,0.08);
+}
+
+/* =========================
+   BOTTOM
+========================= */
+
+.bottom-actions{
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main-content{
+    flex:1;
+    padding:30px;
+    overflow-y:auto;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar{
+    padding:25px;
+    border-radius:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.welcome-title{
+    font-size:38px;
+    font-weight:bold;
+    color:#22d3ee;
+}
+
+.welcome-sub{
+    margin-top:6px;
+    color:gray;
+    font-size:16px;
+}
+
+.status-label{
+    color:gray;
+    font-size:13px;
+}
+
+.status-online{
+    color:#22c55e;
+    font-weight:bold;
+    margin-top:5px;
+    font-size:18px;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.settings-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.settings-card{
+    padding:30px;
+    border-radius:20px;
+}
+
+.card-title{
+    font-size:28px;
+    margin-bottom:25px;
+    color:#22d3ee;
+    font-weight:bold;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.input{
+    width:100%;
+    padding:16px;
+    border-radius:14px;
+    transition:0.3s;
+    font-size:16px;
+}
+
+body.dark .input{
+    background:rgba(0,0,0,0.5);
+    border:1px solid rgba(255,255,255,0.08);
+    color:white;
+}
+
+body.light .input{
+    background:white;
+    border:1px solid #d1d5db;
+    color:black;
+}
+
+.input:focus{
+    outline:none;
+    border-color:cyan;
+    box-shadow:0 0 15px rgba(0,255,255,0.25);
+}
+
+.textarea{
+    resize:none;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn{
+    border:none;
+    padding:16px;
+    border-radius:14px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    background:linear-gradient(90deg, #06b6d4, #3b82f6);
+    color:white;
+    font-size:16px;
+    text-align:center;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.secondary-btn{
+    background:#374151;
+}
+
+.logout-btn{
+    background:linear-gradient(90deg,#ef4444,#dc2626);
+}
+
+/* =========================
+   NAME SECTION
+========================= */
+
+.name-section{
+    margin-top:25px;
+}
+
+.name-row{
+    display:flex;
+    gap:20px;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#06b6d4;
+    border-radius:20px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:950px){
+
+    .settings-grid{
+        grid-template-columns:1fr;
+    }
+
+    .name-row{
+        flex-direction:column;
+    }
+
+}
+
+@media(max-width:768px){
+
+    body{
+        overflow:auto;
+    }
+
+    .app{
+        flex-direction:column;
+        height:auto;
+    }
+
+    .sidebar{
+        width:100%;
+        height:auto;
+    }
+
+    .main-content{
+        padding:20px;
+    }
+
+    .welcome-title{
+        font-size:28px;
+    }
+
+    .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+}
